@@ -1,0 +1,36 @@
+
+Assignment : 2 Classification of Peptides
+
+Group 71 :
+Rahul(2019191)
+Raghav Sharma(2019189)
+Abhish Panwar(2019135)
+
+How to use code->
+    1: Make Sure all the files are in the same folder.
+    2: Naming of the test data and train data should be test.csv and train.csv respectively
+    3: Run the Assignment.py file.
+    4: A submission.csv file will be generated which is the prediction of peptides
+
+Explaination of Algorithm :
+
+    Assumptions : As we go through the given train data found that the last sequence is valid peptide
+                  because it contains character('/',u, etc) which do not defines any amino acid, therefore
+                  we are removing those sequences Only from train data, as we assume no such sequence will be
+                  exist in test data.
+
+    Feature Generation : We used the method of composition to generate feature by two ways :
+
+            Method1 : Generated the feature using frequency of the single character in a sequence divided by the length of the sequence.
+            Method2 : Generated feature by taking two adjacent amino acid frequency in a sequence divided by the length of the sequence.
+                      Example :
+                        AFAFFAGHI
+
+                        we have freq(AF) = 2
+                        therefore, we will have 2/(9) as the position of AF
+
+                      and we have in total 20*20 = 400(adjancent) + 20(single) features for a sequence
+
+
+    Model training : After trying models like, SVM, KNN, MLP,CatergoricalNB, Random Forest and many more we found that
+                     Random Forest is giving us the most desired results. with max_depth = 60 and n_estimatores = 1000+
